@@ -97,11 +97,11 @@ List<String> stringaArray = new ArrayList<String>();
        try{
            for(int i = 0; i < archivio.size(); i++){
                if (archivio.get(i) instanceof Libro) {
-                   stringaArray.add(archivio.get(i).isbnCode + archivio.get(i).titolo + ((Libro) archivio.get(i)).autore );
-                   System.out.println("libro");
+                   stringaArray.add(archivio.get(i).isbnCode + "_"+ archivio.get(i).titolo + "_"+((Libro) archivio.get(i)).autore );
+
                } else if (archivio.get(i) instanceof Rivista){
-                   stringaArray.add(archivio.get(i).isbnCode + archivio.get(i).titolo + ((Rivista) archivio.get(i)).periodicita );
-                   System.out.println("rivista");
+                   stringaArray.add(archivio.get(i).isbnCode + "_"+archivio.get(i).titolo +"_"+ ((Rivista) archivio.get(i)).periodicita );
+
                }
 
            }
@@ -113,7 +113,14 @@ List<String> stringaArray = new ArrayList<String>();
 
     ;
 
-    public void importaArchivio() {
+    public void importaArchivio() throws Exception {
+        try {
+            File file = new File ("C:/Users/samue/Documents/compiti Epicode/backend2/w13d5/save.txt");
+
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
     }
 
     ;
