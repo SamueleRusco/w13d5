@@ -16,9 +16,7 @@ public class OggettiBiblioteca {
     public long getisbnCode() {
         return isbnCode;
     }
-    public int getannoPubblicazione(){
-        return annoDiPubblicazione;
-    }
+
 
 
 
