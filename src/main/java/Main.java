@@ -1,12 +1,11 @@
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-
-import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import org.apache.commons.io.FileUtils;
+
 public class Main {
     public static List<OggettiBiblioteca> archivio = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
@@ -79,10 +78,10 @@ public class Main {
 
     public static void ricercaAutore() {
         System.out.println("inserire nome autore");
-       String elemento = scanner.next();
+        String elemento = scanner.next();
 
         scanner.nextLine();
-        archivio.stream().filter(primoObj -> primoObj.getClass().equals(Libro.class) )
+        archivio.stream().filter(primoObj -> primoObj.getClass().equals(Libro.class))
                 .filter(obj -> ((Libro) obj).autore.equals(elemento))
                 .forEach(e -> System.out.println(e.titolo.toString()));
 
@@ -92,22 +91,23 @@ public class Main {
 
 
     public static void salvaArchivio() throws Exception {
-File archivioFile = new File("C:/Users/samue/Documents/compiti Epicode/backend2/w13d5/save.txt");
-List<String> stringaArray = new ArrayList<String>();
-       try{
-           for(int i = 0; i < archivio.size(); i++){
-               if (archivio.get(i) instanceof Libro) {
-                   stringaArray.add(archivio.get(i).isbnCode + "_"+ archivio.get(i).titolo + "_"+((Libro) archivio.get(i)).autore );
+        File archivioFile = new File("C:/Users/samue/Documents/compiti Epicode/backend2/w13d5/save.txt");
+        List<String> stringaArray = new ArrayList<String>();
+        try {
+            for (int i = 0; i < archivio.size(); i++) {
+                if (archivio.get(i) instanceof Libro) {
+                    stringaArray.add(archivio.get(i).isbnCode + "_" + archivio.get(i).titolo + "_" + ((Libro) archivio.get(i)).autore);
 
-               } else if (archivio.get(i) instanceof Rivista){
-                   stringaArray.add(archivio.get(i).isbnCode + "_"+archivio.get(i).titolo +"_"+ ((Rivista) archivio.get(i)).periodicita );
+                } else if (archivio.get(i) instanceof Rivista) {
+                    stringaArray.add(archivio.get(i).isbnCode + "_" + archivio.get(i).titolo + "_" + ((Rivista) archivio.get(i)).periodicita);
 
-               }
+                }
 
-           }
-           FileUtils.writeLines(archivioFile, stringaArray);
-       }
-       catch(Exception e){e.getStackTrace();}
+            }
+            FileUtils.writeLines(archivioFile, stringaArray);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
         System.out.println("file salvato?");
     }
 
@@ -115,7 +115,7 @@ List<String> stringaArray = new ArrayList<String>();
 
     public void importaArchivio() throws Exception {
         try {
-            File file = new File ("C:/Users/samue/Documents/compiti Epicode/backend2/w13d5/save.txt");
+            File file = new File("C:/Users/samue/Documents/compiti Epicode/backend2/w13d5/save.txt");
 
         } catch (Exception e) {
             e.getStackTrace();
